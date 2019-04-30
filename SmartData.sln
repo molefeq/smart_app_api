@@ -1,9 +1,57 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.Api", "SmartData.Api\SmartData.Api.csproj", "{16A0AB96-7B0D-421D-9553-F67F6E7FF21A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.DataAccess", "SmartData.DataAccess\SmartData.DataAccess.csproj", "{6374CFFE-D9FD-4E05-9399-F9DBC3E3B543}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.Common", "SmartData.Common\SmartData.Common.csproj", "{4FB9F44E-1721-4671-8E5C-6187CFBB0A4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.Data", "SmartData.Data\SmartData.Data.csproj", "{9F324181-3530-4939-B7DF-3A907702715E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.Service", "SmartData.Service\SmartData.Service.csproj", "{A9F75B86-388C-47C2-B9BD-9BD623B56C94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.UCloudLinkApiClient", "SmartData.UCloudLinkApiClient\SmartData.UCloudLinkApiClient.csproj", "{7851FA28-EAF6-4485-B1A6-490C4D1FDBB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartData.Payfast", "SmartData.Payfast\SmartData.Payfast.csproj", "{7333DB06-C690-48C9-9C13-09AE20FA885E}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16A0AB96-7B0D-421D-9553-F67F6E7FF21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A0AB96-7B0D-421D-9553-F67F6E7FF21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A0AB96-7B0D-421D-9553-F67F6E7FF21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A0AB96-7B0D-421D-9553-F67F6E7FF21A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6374CFFE-D9FD-4E05-9399-F9DBC3E3B543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6374CFFE-D9FD-4E05-9399-F9DBC3E3B543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6374CFFE-D9FD-4E05-9399-F9DBC3E3B543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6374CFFE-D9FD-4E05-9399-F9DBC3E3B543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB9F44E-1721-4671-8E5C-6187CFBB0A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB9F44E-1721-4671-8E5C-6187CFBB0A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB9F44E-1721-4671-8E5C-6187CFBB0A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB9F44E-1721-4671-8E5C-6187CFBB0A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F324181-3530-4939-B7DF-3A907702715E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F324181-3530-4939-B7DF-3A907702715E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F324181-3530-4939-B7DF-3A907702715E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F324181-3530-4939-B7DF-3A907702715E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F75B86-388C-47C2-B9BD-9BD623B56C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F75B86-388C-47C2-B9BD-9BD623B56C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F75B86-388C-47C2-B9BD-9BD623B56C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F75B86-388C-47C2-B9BD-9BD623B56C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7851FA28-EAF6-4485-B1A6-490C4D1FDBB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7851FA28-EAF6-4485-B1A6-490C4D1FDBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7851FA28-EAF6-4485-B1A6-490C4D1FDBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7851FA28-EAF6-4485-B1A6-490C4D1FDBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

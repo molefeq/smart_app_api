@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartData.Common\SmartData.Common.csproj" />
+    <ProjectReference Include="..\SmartData.DataAccess\SmartData.DataAccess.csproj" />
+    <ProjectReference Include="..\SmartData.Data\SmartData.Data.csproj" />
+    <ProjectReference Include="..\SmartData.Payfast\SmartData.Payfast.csproj" />
+    <ProjectReference Include="..\SmartData.UCloudLinkApiClient\SmartData.UCloudLinkApiClient.csproj" />
+  </ItemGroup>
+
+</Project>
