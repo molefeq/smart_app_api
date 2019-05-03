@@ -165,11 +165,7 @@ namespace SmartData.DataAccess
                     .HasColumnType("date");
 
                 entity.Property(e => e.CreateUserId).HasColumnName("create_user_id");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnName("device_id")
-                    .HasMaxLength(20);
-
+                
                 entity.Property(e => e.DeviceName)
                     .IsRequired()
                     .HasColumnName("device_name")
@@ -188,8 +184,6 @@ namespace SmartData.DataAccess
                     .HasColumnName("serail_number")
                     .HasMaxLength(200);
 
-                entity.Property(e => e.StatusId).HasColumnName("status_id");
-
                 entity.HasOne(d => d.CreateUser)
                     .WithMany()
                     .HasForeignKey(d => d.CreateUserId)
@@ -205,11 +199,6 @@ namespace SmartData.DataAccess
                     .WithMany()
                     .HasForeignKey(d => d.ModifiedUserId)
                     .HasConstraintName("fk_device_detail_modified_user_id");
-
-                entity.HasOne(d => d.Status)
-                    .WithMany()
-                    .HasForeignKey(d => d.StatusId)
-                    .HasConstraintName("fk_device_detail_status_id");
             });
 
             modelBuilder.Entity<DeviceStatus>(entity =>

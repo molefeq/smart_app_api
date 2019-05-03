@@ -1,5 +1,6 @@
 ﻿using SmartData.Data.ViewModels;
 using SmartData.Data.ViewModels.Device;
+
 using SmartData.DataAccess.Models;
 
 using SmartData.UCloudLinkApiClient.SubUser.Models;
@@ -17,13 +18,10 @@ namespace SmartData.Service.DataMappers
             return new DeviceDetailModel()
             {
                 Id = deviceDetail.Id,
-                DeviceId = deviceDetail.DeviceId,
                 DeviceName = deviceDetail.DeviceName,
                 SerailNumber = deviceDetail.SerailNumber,
                 LinkedUserId = deviceDetail.LinkedUserId,
                 // LinkedUserName = deviceDetail.LinkedUser == null ? "" :  `${ deviceDetail.LinkedUser.Firstname} ${ deviceDetail.LinkedUser.LastName}`,
-                StatusId = deviceDetail.StatusId,
-                StatusName = deviceDetail.Status.Name
             };
         }
 
@@ -60,8 +58,12 @@ namespace SmartData.Service.DataMappers
 
         public void MapToDeviceDetailModel(DeviceDetailModel deviceDetailModel, DeviceDetail deviceDetail)
         {
+            if (deviceDetail == null)
+            {
+                return;
+            }
+
             deviceDetailModel.Id = deviceDetail.Id;
-            deviceDetailModel.DeviceId = deviceDetail.DeviceId;
             deviceDetailModel.DeviceName = deviceDetail.DeviceName;
             deviceDetailModel.LinkedUserId = deviceDetail.LinkedUserId;
         }

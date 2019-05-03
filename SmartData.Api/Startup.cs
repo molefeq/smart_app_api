@@ -89,6 +89,9 @@ namespace SmartData.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            bool isLocalUat = env.IsEnvironment("LOCAL_UAT");
+            string swaggerJsonUrlPrefix = isLocalUat ? "/smartapp" : "";
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -108,7 +111,7 @@ namespace SmartData.Api
             app.UseHttpsRedirection();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zenit Payroll API V1");
+                c.SwaggerEndpoint($"{swaggerJsonUrlPrefix}/swagger/v1/swagger.json", "Smart App Web API V1");
             });
             app.UseCors("all_origins");
             app.UseMvc();
