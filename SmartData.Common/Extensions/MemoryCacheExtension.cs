@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using System;
 
 namespace SmartData.Common.Extensions
 {
@@ -14,17 +15,24 @@ namespace SmartData.Common.Extensions
 
         public static void SetLoginCustomerId(this IMemoryCache cache, string loginCustomerId)
         {
-            cache.Set(LOGIN_CUSTOMER_ID, loginCustomerId);
+            var cacheEntryOptions = new MemoryCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
+
+            cache.Set(LOGIN_CUSTOMER_ID, loginCustomerId, cacheEntryOptions);
         }
 
         public static string AccessToken(this IMemoryCache cache)
         {
+
             return cache.Get<string>(ACCESS_TOKEN);
         }
 
         public static void SetAccessToken(this IMemoryCache cache, string accessToken)
         {
-            cache.Set(ACCESS_TOKEN, accessToken);
+            var cacheEntryOptions = new MemoryCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
+
+            cache.Set(ACCESS_TOKEN, accessToken, cacheEntryOptions);
         }
     }
 }

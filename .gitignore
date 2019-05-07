@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /SmartData.Api/Serilogs
+/SmartData.Api/appsettings.prod.json
