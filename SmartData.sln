@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.Service", "SmartD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.UCloudLinkApiClient", "SmartData.UCloudLinkApiClient\SmartData.UCloudLinkApiClient.csproj", "{7851FA28-EAF6-4485-B1A6-490C4D1FDBB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartData.Payfast", "SmartData.Payfast\SmartData.Payfast.csproj", "{7333DB06-C690-48C9-9C13-09AE20FA885E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartData.Payfast", "SmartData.Payfast\SmartData.Payfast.csproj", "{7333DB06-C690-48C9-9C13-09AE20FA885E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartData.ReferenceApi", "SmartData.ReferenceApi\SmartData.ReferenceApi.csproj", "{64984F81-FE0D-4BDC-A260-6C18DB073394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7333DB06-C690-48C9-9C13-09AE20FA885E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64984F81-FE0D-4BDC-A260-6C18DB073394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64984F81-FE0D-4BDC-A260-6C18DB073394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64984F81-FE0D-4BDC-A260-6C18DB073394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64984F81-FE0D-4BDC-A260-6C18DB073394}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

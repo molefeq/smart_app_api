@@ -2,6 +2,7 @@
 using SmartData.Data.ViewModels;
 using SmartData.Service.ReferenceData;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SmartData.Api.Controllers
 {
@@ -28,6 +29,22 @@ namespace SmartData.Api.Controllers
         public IActionResult GetCountries()
         {
             return Ok(referenceDataService.GetCountries());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BulkInsertCountries()
+        {
+            await referenceDataService.BulkInsertCountries();
+
+            return Ok();
+        }
+
+        [HttpPost("{baseCurrency}")]
+        public async Task<IActionResult> BulkInsertExchangeRates([FromRoute] string baseCurrency)
+        {
+            await referenceDataService.BulkInsertExchangeRates(baseCurrency);
+
+            return Ok();
         }
 
         //[HttpGet]

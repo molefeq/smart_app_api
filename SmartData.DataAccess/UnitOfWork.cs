@@ -14,7 +14,11 @@ namespace SmartData.DataAccess
         private GenericRepository<Role> role;
         private GenericRepository<Account> account;
         private GenericRepository<DeviceDetail> deviceDetail;
-        private GenericRepository<DeviceStatus> deviceStatus;
+        private GenericRepository<Tier> tier;
+        private GenericRepository<PaymentDetail> paymentDetail;
+        private GenericRepository<ExchangeRate> exchangeRate;
+        private GenericRepository<TopupOption> topupOption;
+        private GenericRepository<Currency> currency;
 
         #endregion
 
@@ -88,16 +92,68 @@ namespace SmartData.DataAccess
             }
         }
 
-        public GenericRepository<DeviceStatus> DeviceStatus
+        public GenericRepository<Tier> Tier
         {
             get
             {
-                if (deviceStatus == null)
+                if (tier == null)
                 {
-                    deviceStatus = new GenericRepository<DeviceStatus>(context);
+                    tier = new GenericRepository<Tier>(context);
                 }
 
-                return deviceStatus;
+                return tier;
+            }
+        }
+
+        public GenericRepository<PaymentDetail> PaymentDetail
+        {
+            get
+            {
+                if (paymentDetail == null)
+                {
+                    paymentDetail = new GenericRepository<PaymentDetail>(context);
+                }
+
+                return paymentDetail;
+            }
+        }
+
+        public GenericRepository<ExchangeRate> ExchangeRate
+        {
+            get
+            {
+                if (exchangeRate == null)
+                {
+                    exchangeRate = new GenericRepository<ExchangeRate>(context);
+                }
+
+                return exchangeRate;
+            }
+        }
+
+        public GenericRepository<TopupOption> TopupOption
+        {
+            get
+            {
+                if (topupOption == null)
+                {
+                    topupOption = new GenericRepository<TopupOption>(context);
+                }
+
+                return topupOption;
+            }
+        }
+
+        public GenericRepository<Currency> Currency
+        {
+            get
+            {
+                if (currency == null)
+                {
+                    currency = new GenericRepository<Currency>(context);
+                }
+
+                return currency;
             }
         }
 

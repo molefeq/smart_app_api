@@ -17,9 +17,9 @@ namespace SmartData.UCloudLinkApiClient
     {
         public HttpClient Client { get; private set; }
 
-        public UCloudLinkClient(HttpClient httpClient, IConfiguration confugaration)
+        public UCloudLinkClient(HttpClient httpClient, IConfiguration configuration)
         {
-            httpClient.BaseAddress = new Uri(confugaration.UCloudLinkBaseUrl());
+            httpClient.BaseAddress = new Uri(configuration.UCloudLinkBaseUrl());
 
             Client = httpClient;
         }

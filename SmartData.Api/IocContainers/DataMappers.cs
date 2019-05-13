@@ -10,6 +10,10 @@ namespace SmartData.Api.IocContainers
             services.AddSingleton<AccountMapper>();
             services.AddSingleton<DeviceDetailMapper>();
             services.AddSingleton<OnceOffPaymentMapper>();
+            services.AddSingleton<PaymentDetailMapper>();
+            services.AddSingleton<CountryMapper>();
+            services.AddSingleton<ExchangeRateMapper>();
+            services.AddSingleton<TopupOptionMapper>();
         }
     }
 }

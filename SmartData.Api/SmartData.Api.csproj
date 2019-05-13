@@ -27,6 +27,7 @@
     <ProjectReference Include="..\SmartData.DataAccess\SmartData.DataAccess.csproj" />
     <ProjectReference Include="..\SmartData.Data\SmartData.Data.csproj" />
     <ProjectReference Include="..\SmartData.Payfast\SmartData.Payfast.csproj" />
+    <ProjectReference Include="..\SmartData.ReferenceApi\SmartData.ReferenceApi.csproj" />
     <ProjectReference Include="..\SmartData.Service\SmartData.Service.csproj" />
     <ProjectReference Include="..\SmartData.UCloudLinkApiClient\SmartData.UCloudLinkApiClient.csproj" />
   </ItemGroup>

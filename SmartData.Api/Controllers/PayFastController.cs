@@ -29,13 +29,14 @@ namespace SmartData.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(OnceOffPaymentResponse), 200)]
         public IActionResult OnceOffPayment(BuyDataModel buyDataModel)
         {
             SetBuyerDetails(buyDataModel);
 
-            var url = paymentService.GetOnceOffPaymentUrl(buyDataModel, payFastSettings);
+            var response = paymentService.GetOnceOffPaymentUrl(buyDataModel, payFastSettings);
 
-            return Ok(new { url = url });
+            return Ok(response);
         }
 
         [HttpPost]

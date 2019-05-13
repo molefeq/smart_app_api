@@ -18,8 +18,10 @@ namespace SmartData.DataAccess
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<DeviceDetail> DeviceDetail { get; set; }
-        public virtual DbSet<DeviceStatus> DeviceStatus { get; set; }
-
+        public virtual DbSet<ExchangeRate> ExchangeRate { get; set; }
+        public virtual DbSet<PaymentDetail> PaymentDetail { get; set; }
+        public virtual DbSet<TopupOption> TopupOption { get; set; }
+        public virtual DbSet<Tier> Tier { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
@@ -87,7 +89,7 @@ namespace SmartData.DataAccess
                     .HasMaxLength(100);
 
                 entity.HasOne(d => d.Country)
-                    .WithMany(p => p.Account)
+                    .WithMany()
                     .HasForeignKey(d => d.CountryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_account_country_country_id");
@@ -119,10 +121,42 @@ namespace SmartData.DataAccess
                     .HasColumnName("code")
                     .HasMaxLength(10);
 
+                entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
+
+                entity.Property(e => e.IsUcloudEnabled).HasColumnName("is_ucloud_enabled");
+
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.TierId).HasColumnName("tier_id");
+
+                entity.HasOne(d => d.Currency)
+                    .WithMany()
+                    .HasForeignKey(d => d.CurrencyId)
+                    .HasConstraintName("fk_country_currency_id");
+
+                entity.HasOne(d => d.Tier)
+                    .WithMany()
+                    .HasForeignKey(d => d.TierId)
+                    .HasConstraintName("fk_country_tier");
+            });
+
+            modelBuilder.Entity<Currency>(entity =>
+            {
+                entity.ToTable("currency");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Code)
+                    .IsRequired()
+                    .HasColumnName("code")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Symbol)
+                    .HasColumnName("symbol")
+                    .HasMaxLength(4);
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -165,7 +199,7 @@ namespace SmartData.DataAccess
                     .HasColumnType("date");
 
                 entity.Property(e => e.CreateUserId).HasColumnName("create_user_id");
-                
+
                 entity.Property(e => e.DeviceName)
                     .IsRequired()
                     .HasColumnName("device_name")
@@ -200,22 +234,131 @@ namespace SmartData.DataAccess
                     .HasForeignKey(d => d.ModifiedUserId)
                     .HasConstraintName("fk_device_detail_modified_user_id");
             });
-
-            modelBuilder.Entity<DeviceStatus>(entity =>
+            
+            modelBuilder.Entity<ExchangeRate>(entity =>
             {
-                entity.ToTable("device_status", "device");
+                entity.ToTable("exchange_rate");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.BaseCurrencyId).HasColumnName("base_currency_id");
+
+                entity.Property(e => e.CountryId).HasColumnName("country_id");
+
+                entity.Property(e => e.CreateDate)
+                    .HasColumnName("create_date")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Rate)
+                    .HasColumnName("rate")
+                    .HasColumnType("numeric");
+
+                entity.HasOne(d => d.BaseCurrency)
+                    .WithMany()
+                    .HasForeignKey(d => d.BaseCurrencyId)
+                    .HasConstraintName("fk_exchange_rate_base_currency_id");
+
+                entity.HasOne(d => d.Country)
+                    .WithMany()
+                    .HasForeignKey(d => d.CountryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_exchange_rate_country_id");
+            });
+
+            modelBuilder.Entity<PaymentDetail>(entity =>
+            {
+                entity.ToTable("payment_detail", "payment");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasDefaultValueSql("nextval('device.device_status_id_seq'::regclass)");
+                    .HasDefaultValueSql("nextval('payment.payment_detail_id_seq'::regclass)");
 
-                entity.Property(e => e.Code)
-                    .HasColumnName("code")
-                    .HasMaxLength(20);
+                entity.Property(e => e.Amount)
+                    .HasColumnName("amount")
+                    .HasColumnType("money");
 
-                entity.Property(e => e.Name)
-                    .HasColumnName("name")
-                    .HasMaxLength(200);
+                entity.Property(e => e.CreateDate)
+                    .HasColumnName("create_date")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.CreateUserId).HasColumnName("create_user_id");
+
+                entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
+
+                entity.Property(e => e.IsPaymentSuccessful)
+                    .IsRequired()
+                    .HasColumnName("is_payment_successful")
+                    .HasDefaultValueSql("true");
+
+                entity.Property(e => e.PaymentId).HasColumnName("payment_id");
+
+                entity.HasOne(d => d.CreateUser)
+                    .WithMany()
+                    .HasForeignKey(d => d.CreateUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_payment_detail_create_user_id");
+
+                entity.HasOne(d => d.Currency)
+                    .WithMany()
+                    .HasForeignKey(d => d.CurrencyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_payment_detail_currency_id");
+            });
+
+            modelBuilder.Entity<TopupOption>(entity =>
+            {
+                entity.ToTable("topup_option");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Amount)
+                    .HasColumnName("amount")
+                    .HasColumnType("money");
+
+                entity.Property(e => e.CreateDate)
+                    .HasColumnName("create_date")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
+
+                entity.Property(e => e.DataQuantity).HasColumnName("data_quantity");
+
+                entity.Property(e => e.DataQuantityDescription)
+                    .IsRequired()
+                    .HasColumnName("data_quantity_description")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.DataScale)
+                    .IsRequired()
+                    .HasColumnName("data_scale")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.TierId).HasColumnName("tier_id");
+
+                entity.HasOne(d => d.Currency)
+                    .WithMany()
+                    .HasForeignKey(d => d.CurrencyId)
+                    .HasConstraintName("fk_topup_option_currency_id");
+
+                entity.HasOne(d => d.Tier)
+                    .WithMany(p => p.TopupOption)
+                    .HasForeignKey(d => d.TierId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_topup_option_tier");
+            });
+
+            modelBuilder.Entity<Tier>(entity =>
+            {
+                entity.ToTable("tier");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.TierDescription)
+                    .IsRequired()
+                    .HasColumnName("tier_description")
+                    .HasMaxLength(100);
             });
 
             modelBuilder.HasSequence("device_detail_id_seq");
@@ -225,6 +368,8 @@ namespace SmartData.DataAccess
             modelBuilder.HasSequence("account_id_seq");
 
             modelBuilder.HasSequence("role_id_seq");
+
+            modelBuilder.HasSequence("payment_detail_id_seq");
         }
     }
 }

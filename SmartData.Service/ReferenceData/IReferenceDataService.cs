@@ -1,5 +1,6 @@
 ﻿using SmartData.Data.ViewModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SmartData.Service.ReferenceData
 {
@@ -7,5 +8,7 @@ namespace SmartData.Service.ReferenceData
     {
         StaticDataModel GetStaticData();
         List<ReferenceDataModel> GetCountries();
+        Task BulkInsertCountries();
+        Task BulkInsertExchangeRates(string baseCurrency);
     }
 }

@@ -12,6 +12,7 @@ using SmartData.Api.IocContainers;
 using SmartData.Api.Providers;
 using SmartData.DataAccess;
 using SmartData.Payfast.Models;
+using SmartData.ReferenceApi.RestCountriesApi;
 using SmartData.UCloudLinkApiClient;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
@@ -71,7 +72,9 @@ namespace SmartData.Api
                         );
             });
             services.AddMemoryCache();
+
             services.AddHttpClient<UCloudLinkClient>();
+
             services.AddDbContext<SmartAppContext>(options => options.UseNpgsql(Configuration.GetConnectionString("SmartApp_DB_Local")), ServiceLifetime.Transient);
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.Configure<PayFastSettings>(Configuration.GetSection("PayFastSettings"));
@@ -82,6 +85,7 @@ namespace SmartData.Api
             UCloudLinkClients.Initialise(services);
             UCloudLinkServices.Initialise(services);
             PayFast.Initialise(services);
+            ReferenceApiContainer.Initialise(services);
 
             services.AddScoped<LoginProvider>();
         }

@@ -208,6 +208,23 @@ namespace SmartData.DataAccess.Repositories
             dbSet.Remove(entityToDelete);
         }
 
+        public virtual void DeleteEntries(List<TEntity> entities)
+        {
+            if (entities == null || entities.Count == 0)
+            {
+                return;
+            }
+
+            var detachedEntities = entities.Where(item => context.Entry(item).State == EntityState.Detached);
+
+            if (entities != null && entities.Count > 0)
+            {
+                dbSet.AttachRange(detachedEntities);
+            }
+
+            dbSet.RemoveRange(entities);
+        }
+
         public virtual void Update(TEntity entityToUpdate)
         {
             dbSet.Update(entityToUpdate);

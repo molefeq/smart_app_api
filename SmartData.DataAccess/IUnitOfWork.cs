@@ -12,8 +12,11 @@ namespace SmartData.DataAccess
         GenericRepository<Country> Country { get; }
         GenericRepository<Role> Role { get; }
         GenericRepository<DeviceDetail> DeviceDetail { get; }
-        GenericRepository<DeviceStatus> DeviceStatus { get; }
-
+        GenericRepository<Tier> Tier { get; }
+        GenericRepository<PaymentDetail> PaymentDetail { get; }
+        GenericRepository<TopupOption> TopupOption { get; }
+        GenericRepository<ExchangeRate> ExchangeRate { get; }
+        GenericRepository<Currency> Currency { get; }
         #endregion
 
         Task SaveAsync();

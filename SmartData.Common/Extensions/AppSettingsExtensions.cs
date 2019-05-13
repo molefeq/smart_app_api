@@ -116,5 +116,30 @@ namespace SmartData.Common.Extensions
         {
             return configuration["applicationname"];
         }
+
+        public static string RestCountriesUrl(this IConfiguration configuration)
+        {
+            return configuration["restcountries:url"];
+        }
+
+        public static string OpenRatesUrl(this IConfiguration configuration)
+        {
+            return configuration["openrates:url"];
+        }
+
+        #region "here API"
+        public static string HereApiAppId(this IConfiguration configuration)
+        {
+            return configuration["hereApi:appId"];
+        }
+        public static string HereApiAppCode(this IConfiguration configuration)
+        {
+            return configuration["hereApi:appCode"];
+        }
+        public static string HereApiAppReverseGeocodeUrl(this IConfiguration configuration)
+        {
+            return configuration["hereApi:reverseGeocodeUrl"];
+        }
+        #endregion
     }
 }

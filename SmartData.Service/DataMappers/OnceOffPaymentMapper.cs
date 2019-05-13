@@ -1,12 +1,12 @@
 ﻿using SmartData.Data.ViewModels;
+using SmartData.DataAccess.Models;
 using SmartData.Payfast.Models;
-using System;
 
 namespace SmartData.Service.DataMappers
 {
     public class OnceOffPaymentMapper
     {
-        public OnceOffPaymentModel MapToOnceOffPaymentModel(BuyDataModel buyDataModel, PayFastSettings payFastSettings)
+        public OnceOffPaymentModel MapToOnceOffPaymentModel(PaymentDetail paymentDetail, BuyDataModel buyDataModel, PayFastSettings payFastSettings)
         {
             return new OnceOffPaymentModel()
             {
@@ -19,7 +19,7 @@ namespace SmartData.Service.DataMappers
                 },
                 Transaction = new TransactionDetail
                 {
-                    PaymentId = Guid.NewGuid().ToString(),
+                    PaymentId = paymentDetail.PaymentId.ToString(),
                     Amount = decimal.ToDouble(buyDataModel.Amount),
                     Item = "Airtime Top Up",
                     Description = $"Airtime Top Up For {buyDataModel.Firstname} { buyDataModel.Lastname}",

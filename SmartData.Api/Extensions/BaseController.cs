@@ -15,9 +15,10 @@ namespace SmartData.Api.Extensions
 
         protected virtual void SetBuyerDetails(BuyDataModel buyDataModel)
         {
-            buyDataModel.EmailAddress = "molefeq@gmail.com";// this.EmailAddress;
-            buyDataModel.Firstname = "Qinisela";// this.Firstname;
-            buyDataModel.Lastname = "Molefe";// this.Lastname;
+            buyDataModel.EmailAddress = this.EmailAddress;
+            buyDataModel.Firstname = this.Firstname;
+            buyDataModel.Lastname = this.Lastname;
+            buyDataModel.UserId = this.UserId.Value;
         }
 
         protected virtual long? UserId

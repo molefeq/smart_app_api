@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SmartData.DataAccess.Models
+﻿namespace SmartData.DataAccess.Models
 {
     public partial class Country
     {
-        public Country()
-        {
-            Account = new HashSet<Account>();
-        }
-
         public long Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public bool? IsUcloudEnabled { get; set; }
+        public int? TierId { get; set; }
+        public long? CurrencyId { get; set; }
 
-        public virtual ICollection<Account> Account { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual Tier Tier { get; set; }
     }
 }

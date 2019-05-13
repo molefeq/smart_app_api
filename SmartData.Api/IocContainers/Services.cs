@@ -3,6 +3,7 @@ using SmartData.Service.Account;
 using SmartData.Service.Device;
 using SmartData.Service.Payment;
 using SmartData.Service.ReferenceData;
+using SmartData.Service.Topup;
 using SqsLibraries.Common.Email;
 
 namespace SmartData.Api.IocContainers
@@ -16,6 +17,7 @@ namespace SmartData.Api.IocContainers
             services.AddScoped<IDeviceService, DeviceService>();
             services.AddScoped<IReferenceDataService, ReferenceDataService>();
             services.AddScoped<IPaymentService, PayFastPaymentService>();
+            services.AddScoped<ITopupService, TopupService>();
         }
     }
 }
